@@ -12,7 +12,10 @@ import com.example.bmob.bean.Person;
 
 import java.util.List;
 
+import cn.bmob.push.BmobPush;
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobInstallation;
+import cn.bmob.v3.BmobPushManager;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
@@ -26,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Bmob.initialize(this,"e5b4f6072cea67aa76895b8d30c00ac3");
+        BmobInstallation.getCurrentInstallation(this).save();
+        BmobPush.startWork(this);
         button= (Button) findViewById(R.id.button_add);
         button_query= (Button) findViewById(R.id.button_query);
         button_queryadd= (Button) findViewById(R.id.button_queryadd);
@@ -104,5 +109,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public void pushAll(View view){
+        BmobPushManager push=new BmobPushManager(MainActivity.this);
+        push.pushMessageAll("Test");
     }
 }

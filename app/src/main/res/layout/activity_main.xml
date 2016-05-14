@@ -75,4 +75,14 @@
         android:layout_alignTop="@+id/editText_query"
         android:layout_alignRight="@+id/editText_address"
         android:layout_alignEnd="@+id/editText_address" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="推送"
+        android:id="@+id/button_push"
+        android:onClick="pushAll"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
